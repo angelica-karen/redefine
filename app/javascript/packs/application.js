@@ -9,10 +9,8 @@ require("@rails/activestorage").start()
 require("channels")
 
 //require("packs/signaling-server")
-//import handleJoinSession from './signaling-server'
-//import handleLeaveSession from './signaling-server'
-
-
+console.log("Hello World from Webpacker");
+console.log("Action cable now managed with Webpacker!");
 window.Noty = require("noty")
 
 $(document).on('turbolinks:load', () => {
@@ -30,4 +28,5 @@ $(document).on('turbolinks:load', () => {
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
 
