@@ -1,10 +1,24 @@
 Rails.application.routes.draw do
+  root 'pages#home'
   get '/dashboard', to: 'users#dashboard'
+  get '/users/:id', to: 'users#show'
+  get '/selling_orders', to: 'orders#selling_orders'
+  get '/buying_orders', to: 'orders#buying_orders'
 
   post '/users/edit', to: 'users#update'
 
-  root 'pages#home'
-  post '/sessions', to: 'sessions#create'
+  put '/orders/:id/complete', to: 'orders#complete', as: 'complete_order'
+
+  resources :gigs do
+    member do
+      delete :delete_photo
+      post :upload_photo
+    end
+    resources :orders, only: [:create]
+  end
+
+  
+  post '/sessions', to: 'sessions#create' 
 
   mount ActionCable.server, at: '/cable'
   devise_for :users, 

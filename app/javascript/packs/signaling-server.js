@@ -1,4 +1,4 @@
-// app/javascript/signaling_server.js
+// app/javascript/packs/signaling_server.js
 
 import consumer from "../channels/consumer";
 
@@ -35,6 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Initialize user's own video
+//First we ask the user for access to their computers camera, 
+//which returns a promise that takes a media stream. We then take that media stream, 
+//save it to a local variable, and set our local-video element’s SRC to it.
 document.onreadystatechange = () => {
   if (document.readyState === "interactive") {
     navigator.mediaDevices
@@ -90,8 +93,9 @@ const handleLeaveSession = () => {
     from: currentUser,
   });
 };
-
-const joinRoom = (data) => {
+//This function should take care of everything that needs to happen whenever a new user joins the call, 
+//mainly creating a new RTCPeerConnection and sending them our initial offer. 
+const joinRoom = (data) => { 
   createPC(data.from, true);
 };
 
@@ -101,7 +105,7 @@ const removeUser = (data) => {
   video && video.remove();
   delete pcPeers[data.from];
 };
-
+// We’re going to use those ICE servers that we imported earlier to create a new RTCPeerConnection.
 const createPC = (userId, isOffer) => {
   let pc = new RTCPeerConnection(ice);
   pcPeers[userId] = pc;
