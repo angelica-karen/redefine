@@ -8,7 +8,8 @@ class GigsController < ApplicationController
 
   def new
     @gig = current_user.gigs.build
-    @categories = Category.all
+    #@categories = Category.all
+    @categories = Category.order(:name)
   end
 
   def create
@@ -23,7 +24,8 @@ class GigsController < ApplicationController
   end
 
   def edit
-    @categories = Category.all
+    #@categories = Category.all
+    @categories = Category.order(:name)
   end
 
   def update
