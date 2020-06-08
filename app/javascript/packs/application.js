@@ -8,10 +8,12 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
+window.Dropzone = require("dropzone")
 //require("packs/signaling-server")
 console.log("Hello World from Webpacker");
 console.log("Action cable now managed with Webpacker!");
 window.Noty = require("noty")
+
 
 $(document).on('turbolinks:load', () => {
     $('.toggle').on('click', (e) => {
