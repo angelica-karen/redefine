@@ -83,6 +83,7 @@ class GigsController < ApplicationController
   end
 
   def show
+    @categories = Category.order(:name)
   end
 
   def upload_photo
