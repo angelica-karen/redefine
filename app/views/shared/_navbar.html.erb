@@ -19,7 +19,7 @@
             <div class="navbar-item">
                 <div class="field has-addons">
                     <div class="control">
-                        <input class="input" type="text" placeholder="Find services">
+                        <input class="input" type="text" placeholder="Find brands & services">
                     </div>
                     <div class="control">
                         <a class="button is-danger">Search</a>
@@ -87,8 +87,8 @@
                 </div><div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Orders</a>
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">Selling Orders</a>
-                        <a class="navbar-item">Buying Orders</a>
+                        <%= link_to 'Selling Orders', selling_orders_path, class: "navbar-item" %>
+                        <%= link_to 'Buying Orders', buying_orders_path, class: "navbar-item" %>
                     </div>
                 </div>
                 <%= link_to 'Earnings', dashboard_path, class: "navbar-item" %>
