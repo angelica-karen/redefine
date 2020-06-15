@@ -53,7 +53,8 @@ class RequestsController < ApplicationController
     private
   
     def set_categories
-      @categories = Category.all
+      #@categories = Category.all
+      @categories = Category.order(:name)
     end
   
     def set_request
