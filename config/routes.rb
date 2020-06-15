@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/users/:id', to: 'users#show'
   get '/selling_orders', to: 'orders#selling_orders'
   get '/buying_orders', to: 'orders#buying_orders'
+  get '/all_requests', to: 'requests#list'
 
   post '/users/edit', to: 'users#update'
 
@@ -17,6 +18,8 @@ Rails.application.routes.draw do
     end
     resources :orders, only: [:create] #/gigs/15/orders
   end
+
+  resources :requests
 
   
   post '/sessions', to: 'sessions#create' 
