@@ -2,11 +2,11 @@
     <div class="navbar-brand">
         <a class="navbar-item" href="/">
             <h1 class="title is-4">
-            <i class="fas fa-record-vinyl"></i> Exemplaree 
+            <i class="fas fa-record-vinyl"></i> Redefine リジフアイン
             </h1>
             
         </a>
-
+        
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -23,12 +23,20 @@
                     </div>
                     <div class="control">
                         <a class="button is-danger">Search</a>
-                    </div>
+                    </div>    
+                </div>
+                
+                <div id="nav_language">
+                    Language:
+                    <%= link_to_unless_current "English", locale: "en" %> |
+                    <%= link_to_unless_current "Wookieespeak", locale: "wk" %>
                 </div>
             </div>
+             
         </div>
-
+       
         <div class="navbar-end">
+            
             <%= link_to 'Post Gig', new_gig_path, class: "navbar-item" %>
             <a class="navbar-item">Browse Gigs</a>
 
