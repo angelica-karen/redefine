@@ -3,5 +3,6 @@ class PagesController < ApplicationController
     @random_number = rand(0...10_000)
     our_input_text = " heart"
     @heart = `python lib/assets/python/heart.py "#{our_input_text}"`
+    @yeshua = `python3 lib/assets/python/tokenizer.py "#{our_input_text}"`
   end
 end
