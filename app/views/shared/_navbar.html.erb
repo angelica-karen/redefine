@@ -19,24 +19,16 @@
             <div class="navbar-item">
                 <div class="field has-addons">
                     <div class="control">
-                        <input class="input" type="text" placeholder="Find brands & services">
+                        <input class="input" type="text" placeholder="Find services">
                     </div>
                     <div class="control">
                         <a class="button is-danger">Search</a>
-                    </div>    
-                </div>
-                
-                <div id="nav_language">
-                    Language:
-                    <%= link_to_unless_current "English", locale: "en" %> |
-                    <%= link_to_unless_current "Wookieespeak", locale: "wk" %>
+                    </div>
                 </div>
             </div>
-             
         </div>
-       
+
         <div class="navbar-end">
-            
             <%= link_to 'Post Gig', new_gig_path, class: "navbar-item" %>
             <a class="navbar-item">Browse Gigs</a>
 
@@ -82,14 +74,14 @@
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Buying</a>
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">Post Request</a>
-                        <a class="navbar-item">Manage Requests</a>
+                        <%= link_to 'Post Request', new_request_path, class: "navbar-item" %>
+                        <%= link_to 'Manage Requests', requests_path, class: "navbar-item" %>
                     </div>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Buyer Requests</a>
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">Active Request</a>
+                        <%= link_to 'Active Requests', all_requests_path, class: "navbar-item" %>
                         <a class="navbar-item">Offers Sent</a>
                     </div>
                 </div><div class="navbar-item has-dropdown is-hoverable">
