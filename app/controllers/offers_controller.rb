@@ -7,17 +7,19 @@ class OffersController < ApplicationController
         req = Request.find(offer_params[:request_id])
 
         if req && req.user_id == current_user.id
-            redirect_to request.referrer, alert: "You cannot offer your own request"
+            return redirect_to request.referrer, alert: "You cannot offer your own request"
+            
         end
 
         if Offer.exists?(user_id: current_user.id, request_id: offer_params[:request_id])
-            redirect_to request.referrer, alert: "You can make only one offer at the moment"
+            return redirect_to request.referrer, alert: "You can make only one offer at the moment"
         end
 
         @offer = current_user.offers.build(offer_params)
         if @offer.save
-            # redirect_to request.referrer, notice: "Saved..."
-            redirect_to my_offers_path, notice: "Saved..."
+            #redirect_to my_offers_path, notice: "Saved..."
+            redirect_to request.referrer, notice: "Saved..."
+            
         else
             redirect_to request.referrer, flash: {error: @offer.errors.full_messages.join(', ')}
         end
@@ -41,7 +43,7 @@ class OffersController < ApplicationController
     def reject
         if @offer.pending?
             @offer.rejected!
-            flash[:notice] = "Rejected..."
+            flash[:alert] = "Rejected..."
         end
         redirect_to request.referrer
     end
