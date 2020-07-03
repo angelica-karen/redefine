@@ -7,7 +7,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-
+require("raty-js")
 
 //require("packs/signaling-server")
 console.log("Hello World from Webpacker");

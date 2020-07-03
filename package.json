@@ -13,6 +13,7 @@
     "dropzone": "^5.5.1",
     "noty": "^3.2.0-beta",
     "prop-types": "^15.7.2",
+    "raty-js": "^2.9.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "trix": "^1.2.0",
