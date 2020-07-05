@@ -16,7 +16,7 @@
                                     <%= image_tag avatar_url(current_user), class: "is-rounded" %>
                                 </figure>
                             </div>
-                            
+
                             <div class="card-content">
 
                                 <!-- Upload Button -->
@@ -25,7 +25,7 @@
                                     <%= form_for :user, url: users_edit_url(@user), action: :update, method: :post do |f| %>
                                         <div class="file">
                                             <label class="button is-primary is-outlined is-fullwidth">
-                                                <%= f.file_field :avatar, class: "file-input", onchange: "this.form.submit();" %>
+                                                <%= f.file_field :avatar, class: "file-input", onchange:"this.form.submit();" %>
                                                 <i class="fas fa-upload"></i>&nbsp;&nbsp;&nbsp; Upload Avatar
                                             </label>
                                         </div>
@@ -35,10 +35,10 @@
                                 
                                 <!-- Member -->
                                 <article class="media">
-                                    <div class="media-content">Member since</div>
+                                    <div class="media-content">Member Since</div>
                                     <div class="media-right">
                                         <strong><%= current_user.created_at.strftime('%b %Y') %></strong>
-                                    </div>
+                                    </div>   
                                 </article>
                                 <hr class="h-10">
                                 
@@ -60,7 +60,6 @@
                                             <%= f.submit "Save", class: "button is-danger" %>
                                         <% end %>
                                     </div>
-
                                 </article>                                
                                 <hr class="h-10">
 
@@ -71,9 +70,9 @@
                                         <div class="media-right">
                                             <strong><% if current_user.status %> Online <% else %> Offline <% end %></strong> <i class="toggle far fa-edit" aria-controls="user-status"></i>
                                         </div>
-                                    </div>
+                                    </div> 
 
-                                    <div class="content">
+                                <div class="content">
                                         <%= form_for :user, url: users_edit_url(@user), action: :update, method: :post, html: {id: 'user-status', class: 'is-hidden'} do |f| %>
                                             <div class="field">
                                                 <%= f.select(:status, options_for_select([["Online", true], ["Offline", false]]), {}, {class: "select is-fullwidth"}) %>
@@ -81,7 +80,7 @@
                                             <a class="toggle button is-light" aria-controls="user-status">Cancel</a>
                                             <%= f.submit "Save", class: "button is-danger" %>
                                         <% end %>
-                                    </div>
+                                    </div>  
                                 </article>
 
                             </div>
@@ -129,6 +128,7 @@
                                                 <br>
                                                 <%= current_user.language %>
                                             </p>
+                                            
                                         </div>
                                         <div class="media-right">
                                             <i class="toggle far fa-edit" aria-controls="user-language"></i>
@@ -144,7 +144,6 @@
                                             <%= f.submit "Save", class: "button is-danger" %>
                                         <% end %>
                                     </div>
-
                                 </article>
                                 <hr class="h-10">
                                 
@@ -161,7 +160,30 @@
                                         </p>
                                     </div>
                                 </article>
+                                <hr class="h-10">
+                                
+                                <!-- Mobile Number -->
+                                <article>
+                                    <div class="media">
+                                        <div class="media-content">
+                                            <p>
+                                                <strong>Mobile Number</strong>
+                                                <br>
+                                                <%= current_user.hidden_phone %>
+                                            </p>
+                                        </div>
+                                        <div class="media-right">
+                                            <i class="toggle far fa-edit" aria-controls="user-phone"></i>
+                                        </div>
+                                    </div>
 
+                                    <div class="content">
+                                        <%= form_for :user, url: users_edit_url(@user), action: :update, method: :post, html: {id: 'user-phone', class: 'is-hidden'} do |f| %>                     
+                                            <a class="toggle button is-light" aria-controls="user-phone">Cancel</a>      
+                                             <%= link_to 'Add & Verify', new_phone_verification_path(response), class: "button is-danger" %>
+                                        <% end %>
+                                    </div>
+                                </article>
                             </div>
                         </div>
                     </div>
@@ -172,7 +194,7 @@
             <!-- RIGHT SIDE -->
             <div class="column">
                 <div class="columns is-multiline">
-
+                    
                     <!-- Create New Gig -->
                     <div class="column is-one-third has-text-centered">
                         <%= link_to new_gig_path do %>
@@ -192,10 +214,9 @@
                         <% end %>
                     </div>
 
-
                     <!-- Sample Gig -->
                     <% current_user.gigs.each do |gig| %>
-
+                    
                         <div class="column is-one-third">
                             <div class="card">
 
@@ -216,25 +237,26 @@
                                 </div>
 
                                 <footer class="card-footer">
-                                    <% basic_price = gig.pricings.find{ |p| p.pricing_type == 'basic' } %>
-
+                                    <% basic_price = gig.pricings.find { |p| p.pricing_type == 'basic' } %>
+                                    
                                     <a class="has-text-danger is-block card-footer-item has-text-right">
                                         <% if !basic_price.nil? %>
                                             <span class="small-title">STARTING AT</span> 
-                                            <strong>$<%= basic_price.price %></strong>                                            
-                                        <% else %>
+                                            <strong>$<%= basic_price.price %></strong>
+                                        <% else %> 
                                             <strong>
                                                 <span class="small-title has-text-dark">NO PRICING YET</span>
                                             </strong>
-                                        <% end %>
+
+                                        <% end %>                                           
                                     </a>
                                 </footer>  
                                 
                             </div>
                         </div>
 
-                    <% end %>
-                    
+                    <% end %>     
+
                 </div>
             </div>
             
