@@ -38,3 +38,5 @@ yarn-debug.log*
 # Don't check in credentials 
 config/env.yml
 config/initializers/devise.rb
+config/initializers/stripe.rb
+app/views/user/payment.html.erb

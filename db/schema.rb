@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_05_160803) do
+ActiveRecord::Schema.define(version: 2020_07_15_155245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -155,6 +155,9 @@ ActiveRecord::Schema.define(version: 2020_07_05_160803) do
     t.string "uid"
     t.string "image"
     t.string "phone"
+    t.string "stripe_last_4"
+    t.string "stripe_id"
+    t.string "paypal"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
