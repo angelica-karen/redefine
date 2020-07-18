@@ -39,4 +39,4 @@ yarn-debug.log*
 config/env.yml
 config/initializers/devise.rb
 config/initializers/stripe.rb
-app/views/user/payment.html.erb
+app/views/users/payment.html.erb
